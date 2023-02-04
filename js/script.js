@@ -11,6 +11,9 @@ function start() {
     addNumberToGame(4);
     addNumberToGame(5);
     addNumberToGame(5);
+    removeNumberFromGame(5);
+    removeNumberFromGame(1);
+    removeNumberFromGame(0);
     
     console.log(state.currentGame);
 }
@@ -32,12 +35,37 @@ function addNumberToGame(numberToAdd) {
     state.currentGame.push(numberToAdd);
 }
 
-function isNumberInGame(numberToCheck) {
-    if(state.currentGame.includes(numberToCheck)) {
-        return true;
+function removeNumberFromGame(numberToRemove) {
+
+    if (numberToRemove < 1 || numberToRemove > 60) {
+        console.error('Número invalido', numberToRemove);
+        return;
     }
 
-    return false;
+    var newGame = [];
+
+    for (var i = 0; i < state.currentGame.length; i++) {
+        var currentNumber = state.currentGame[i];
+
+        if (currentNumber === numberToRemove) {
+            continue;
+        }
+
+        newGame.push(currentNumber);
+
+    }
+    state.currentGame = newGame;
+}
+
+function isNumberInGame(numberToCheck) {
+    //if(state.currentGame.includes(numberToCheck)) {
+    //    return true;
+    //}
+
+    //return false;
+    // outra forma de fazer:
+
+    return state.currentGame.includes(numberToCheck);
 }
 
 start();
