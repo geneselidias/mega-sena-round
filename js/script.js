@@ -5,24 +5,17 @@ var savedGames = [];
 var state = {board: [], currentGame: [], savedGames: [] };
 
 function start() {
-    addNumberToGame(1);
-    addNumberToGame(2);
-    addNumberToGame(3);
-    addNumberToGame(4);
-    addNumberToGame(5);
-    saveGame();
-    addNumberToGame(6);
+    createBoard();
+    console.log(state.board);
 
-    saveGame();
-    
+}
 
-    console.log(state.currentGame);
-    console.log(state.savedGames);
-    
-    resetGame();
+function createBoard() {
+    state.board = [];
 
-    console.log(state.currentGame);
-
+    for (var i = 1; i <= 60; i++) {
+        state.board.push(i);
+    }
 }
 
 function addNumberToGame(numberToAdd) {
