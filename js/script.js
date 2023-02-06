@@ -11,16 +11,41 @@ function start() {
     console.log(state.board);
 }
 
-function newGame() {
-    resetGame();
-}
-
 function createBoard() {
     state.board = [];
 
     for (var i = 1; i <= 60; i++) {
         state.board.push(i);
     }
+}
+
+function newGame() {
+    resetGame();
+    render();
+}
+
+function render() {
+    renderBoard();
+
+}
+
+function renderBoard() {
+    var divBoard = document.querySelector('#megasena-board');
+    // forma rápida para zerar um elemento: //
+    divBoard.innerHTML = '';
+
+    var ulNumbers = document.createElement('ul');
+
+    for (var i = 0; i < state.board.length; i++) {
+        var currentNumber = state.board[i];
+
+        var liNumber = document.createElement('li');
+        liNumber.textContent = currentNumber;
+
+        ulNumbers.appendChild(liNumber);
+    }
+
+    divBoard.appendChild(ulNumbers);
 }
 
 function addNumberToGame(numberToAdd) {
