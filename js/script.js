@@ -6,8 +6,13 @@ var state = {board: [], currentGame: [], savedGames: [] };
 
 function start() {
     createBoard();
-    console.log(state.board);
+    newGame();
 
+    console.log(state.board);
+}
+
+function newGame() {
+    resetGame();
 }
 
 function createBoard() {
