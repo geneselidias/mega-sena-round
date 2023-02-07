@@ -113,6 +113,28 @@ function createSaveGameButton() {
 }
 
 function renderSavedGames() {
+    var divSavedGames = document.querySelector('#megasena-saved-games');
+    divSavedGames.innerHTML = '';
+
+    if (state.savedGames.length === 0) {
+        divSavedGames.innerHTML = '<p>Nenhum jogo salvo</p>';
+        // importante usar o innerHTML ao invés do textContent para que a tag <p> não apareça no texto //
+    } else {
+        var ulSavedGames = document.createElement('ul');
+
+        for (var i = 0; i < state.savedGames.length; i++) {
+            var currentGame = state.savedGames[i];
+
+            var liGame = document.createElement('li');
+            liGame.textContent = currentGame.join(', ');
+            // o join é usado para adicionar elementos em um array //
+
+            ulSavedGames.appendChild(liGame);
+        }
+
+        divSavedGames.appendChild(ulSavedGames);
+    }
+
 
 }
 
