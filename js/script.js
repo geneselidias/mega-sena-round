@@ -8,7 +8,8 @@ function start() {
     createBoard();
     newGame();
 
-    console.log(state.board);
+
+   
 }
 
 function createBoard() {
@@ -42,10 +43,25 @@ function renderBoard() {
         var liNumber = document.createElement('li');
         liNumber.textContent = currentNumber;
 
+        liNumber.addEventListener('click', handleNumberClick);
+
         ulNumbers.appendChild(liNumber);
     }
 
     divBoard.appendChild(ulNumbers);
+}
+
+function handleNumberClick(event) {
+    var value = Number(event.currentTarget.textContent);
+    // number é usado para converter um conteúdo em texto, em número //
+    
+    if (isNumberInGame(value)) {
+        removeNumberFromGame(value);
+    } else {
+        addNumberToGame(value);
+    }
+
+    console.log(state.currentGame);
 }
 
 function addNumberToGame(numberToAdd) {
