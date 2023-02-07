@@ -105,6 +105,7 @@ function createNewGameButton() {
 function createSaveGameButton() {
     var button = document.createElement('button');
     button.textContent = 'Salvar jogo';
+    button.disabled = !isGameComplete();
 
     button.addEventListener('click', saveGame);
 
