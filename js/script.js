@@ -20,7 +20,7 @@ function createBoard() {
 function newGame() {
     resetGame();
     render();
-    console.log(state.currentGame);
+    
 }
 
 function render() {
@@ -67,7 +67,7 @@ function handleNumberClick(event) {
         addNumberToGame(value);
     }
 
-    console.log(state.currentGame);
+    
     render();
 }
 
@@ -134,8 +134,6 @@ function renderSavedGames() {
 
         divSavedGames.appendChild(ulSavedGames);
     }
-
-
 }
 
 
@@ -197,8 +195,6 @@ function saveGame() {
 
     state.savedGames.push(state.currentGame);
     newGame();
-
-    console.log(state.savedGames);
 }
 
 function isGameComplete() {
@@ -218,7 +214,7 @@ function randomGame() {
         addNumberToGame(randomNumber);
 
     }    
-    console.log(state.currentGame);
+    
     render();
 }
 
