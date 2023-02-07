@@ -6,10 +6,7 @@ var state = {board: [], currentGame: [], savedGames: [] };
 
 function start() {
     createBoard();
-    newGame();
-
-
-   
+    newGame();   
 }
 
 function createBoard() {
@@ -39,14 +36,20 @@ function renderBoard() {
     divBoard.innerHTML = '';
 
     var ulNumbers = document.createElement('ul');
+    ulNumbers.classList.add('numbers');
 
     for (var i = 0; i < state.board.length; i++) {
         var currentNumber = state.board[i];
 
         var liNumber = document.createElement('li');
         liNumber.textContent = currentNumber;
+        liNumber.classList.add('number');
 
         liNumber.addEventListener('click', handleNumberClick);
+
+        if (isNumberInGame(currentNumber)) {
+            liNumber.classList.add('selected-number');
+        }
 
         ulNumbers.appendChild(liNumber);
     }
@@ -65,6 +68,7 @@ function handleNumberClick(event) {
     }
 
     console.log(state.currentGame);
+    render();
 }
 
 function renderButtons() {
@@ -192,6 +196,7 @@ function randomGame() {
 
     }    
     console.log(state.currentGame);
+    render();
 }
 
 
