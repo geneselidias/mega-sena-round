@@ -5,8 +5,28 @@ var savedGames = [];
 var state = {board: [], currentGame: [], savedGames: [] };
 
 function start() {
+    readLocalStorage();
     createBoard();
     newGame();   
+}
+
+function readLocalStorage() {
+    if (!window.localStorage) {
+        return;
+    }
+
+    var savedGamesFromLocalStorage = window.localStorage.getItem('saved-games');
+
+    if (savedGamesFromLocalStorage) {
+        state.savedGames = JSON.parse(savedGamesFromLocalStorage);
+        //função para persistir dados // 
+    }
+}
+
+function writeToLocalStorage() {
+    window.localStorage.setItem('saved-games', JSON.stringify(state.savedGames));
+    // o json é próprio do local storage que precisa retornar uma string (por isso a importância do stringify) //
+
 }
 
 function createBoard() {
@@ -194,6 +214,7 @@ function saveGame() {
     }
 
     state.savedGames.push(state.currentGame);
+    writeToLocalStorage();
     newGame();
 }
 
